@@ -16,7 +16,76 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [self.window  makeKeyAndVisible];
+    
+    UIView * containView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.window.bounds.size.width,self.window.bounds.size.height)];
+    containView.backgroundColor = [UIColor whiteColor];
+    [self.window addSubview:containView];
+    
+    UILabel *userLabel = [[UILabel alloc]initWithFrame:CGRectMake(80, 140, 80, 30)];
+    userLabel.text = @"用户名";
+    [containView addSubview:userLabel];
+    
+    UILabel * passwordLable = [[UILabel alloc]initWithFrame:CGRectMake(80, 190, 150, 30)];
+    passwordLable.text= @"密码";
+    [containView addSubview:passwordLable];
+    
+    UITextField * textFiledOfuserName = [[UITextField alloc]initWithFrame:CGRectMake(140, 140, 150, 30)];
+//    textFiledOfuserName.text = @"请输入用户名";  //不用这个
+//    这个是提示的输入信息
+    textFiledOfuserName.placeholder = @"请输入账号";
+//    文本居中
+    textFiledOfuserName.textAlignment = NSTextAlignmentCenter;
+//    textFiledOfuserName.backgroundColor = [UIColor grayColor];
+//    再次输入时自动清空
+    textFiledOfuserName.clearsOnBeginEditing = YES;
+    textFiledOfuserName.keyboardType =  UIKeyboardTypeNumberPad;// 这个是显示数字键盘
+    textFiledOfuserName.returnKeyType = UIReturnKeyDefault;
+    textFiledOfuserName.borderStyle = UITextBorderStyleRoundedRect;
+    [containView addSubview:textFiledOfuserName];
+    
+    
+    UITextField * TFOfPassord = [[UITextField alloc]initWithFrame:CGRectMake(140, 190, 150, 30)];
+//    TFOfPassord.backgroundColor = [UIColor grayColor];
+    TFOfPassord.placeholder = @"请输入密码";
+    TFOfPassord.borderStyle = UITextBorderStyleRoundedRect;
+    TFOfPassord.textAlignment = NSTextAlignmentCenter;
+    //再次编辑 自动清空
+    TFOfPassord.clearsOnBeginEditing = YES;
+//    显示密文
+    TFOfPassord.secureTextEntry = YES;
+    [containView addSubview:TFOfPassord];
+    
+    
+    UIButton * QueDing = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//                           alloc]initWithFrame:CGRectMake(100, 250, 80, 40)];
+    QueDing.frame = CGRectMake(100, 250, 80, 40);
+     [QueDing setTitle:@"确定" forState:UIControlStateNormal]; // 设置在什么状态下显示什么文字
+    [QueDing setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    QueDing.showsTouchWhenHighlighted = NO;
+//    QueDing.backgroundColor = [UIColor blackColor];
+    [containView addSubview:QueDing];
+    
+    
+    UIButton * QuXiao = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    QuXiao.frame = CGRectMake(170, 250, 80, 40);
+//
+    [QuXiao setTitle:@"取消" forState:UIControlStateNormal];
+    [QuXiao setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [containView addSubview:QuXiao];
+//    [QueDing setBackgroundImage:[UIImage imageNamed:@"TangYan.jpg"]];
+//    QueDing.hidden = YES;
+//    QueDing.alpha = .1;
+//    NSMutableArray * arr = [NSMutableArray arrayWithArray:containView.subviews];
+//    NSLog(@"%@",arr);
+    
+//    [containView exchangeSubviewAtIndex:0 withSubviewAtIndex:4];
+//    [QueDing removeFromSuperview];
+    
+    
+    
     return YES;
 }
 
